@@ -18,6 +18,8 @@ Microsoft.NET.Test.Sdk 17.14.2, coverlet.collector 6.0.4. Это устрани�
 Проверки, выполненные локально:
 
 - Release-тесты: 22/22.
+- Финальные restore/audit с warnings-as-errors и Release build: 0 ошибок/предупреждений;
+  проверка pending-model-changes не обнаружила изменений.
 - Покрытие строк Services: 97,58%; Domain: 100%; Data: 62,19%.
   Отчёт Cobertura в artifacts/TestResults, WinForms этим запуском не инструментировался.
 - Автономный publish win-x64 успешно собран и запущен с отдельной БД в .tools:
