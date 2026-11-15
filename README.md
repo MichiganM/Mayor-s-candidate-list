@@ -115,7 +115,7 @@ CancellationToken поддерживают отмену. Валидация во
 `main` — релизы, `develop` — интеграция. Функции: `feature/*` от develop с merge `--no-ff`.
 Релизы: `release/*` от develop, merge в main и develop, тег версии.
 Исправления релиза: `hotfix/*` от main с merge в main и develop.
-Релиз 1.0.0 оформляется веткой release/1.0.0 и annotated tag v1.0.0.
+Релиз 1.0.0 оформлен веткой release/1.0.0 и annotated tag v1.0.0.
 Команды и шаблон будущего хотфикса: [docs/gitflow.md](docs/gitflow.md).
 
 ## Тесты и автономная сборка
