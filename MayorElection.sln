@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B024B170-6949-4C3C-82E5-1ED7D5D9B983}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MayorElection.Data", "src\MayorElection.Data\MayorElection.Data.csproj", "{F785BCCC-21F9-4EF4-8208-7E2FDC2C4BDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MayorElection.Domain", "src\MayorElection.Domain\MayorElection.Domain.csproj", "{78DE1F1E-4016-4979-AD63-F4F7DB863C82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MayorElection.Services", "src\MayorElection.Services\MayorElection.Services.csproj", "{ABCBC744-E25A-44AA-AE2F-6053AB1F2B79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MayorElection.WinForms", "src\MayorElection.WinForms\MayorElection.WinForms.csproj", "{00D62294-E542-4C01-9806-7832879746DB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{47C1CEF1-3A50-4298-9C87-5CE91CA06C56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MayorElection.Tests", "tests\MayorElection.Tests\MayorElection.Tests.csproj", "{F1D35981-C1F5-44CC-9E2B-C15A0A82B8E9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F785BCCC-21F9-4EF4-8208-7E2FDC2C4BDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F785BCCC-21F9-4EF4-8208-7E2FDC2C4BDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F785BCCC-21F9-4EF4-8208-7E2FDC2C4BDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F785BCCC-21F9-4EF4-8208-7E2FDC2C4BDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78DE1F1E-4016-4979-AD63-F4F7DB863C82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78DE1F1E-4016-4979-AD63-F4F7DB863C82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78DE1F1E-4016-4979-AD63-F4F7DB863C82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78DE1F1E-4016-4979-AD63-F4F7DB863C82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABCBC744-E25A-44AA-AE2F-6053AB1F2B79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABCBC744-E25A-44AA-AE2F-6053AB1F2B79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABCBC744-E25A-44AA-AE2F-6053AB1F2B79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABCBC744-E25A-44AA-AE2F-6053AB1F2B79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00D62294-E542-4C01-9806-7832879746DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00D62294-E542-4C01-9806-7832879746DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00D62294-E542-4C01-9806-7832879746DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00D62294-E542-4C01-9806-7832879746DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1D35981-C1F5-44CC-9E2B-C15A0A82B8E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1D35981-C1F5-44CC-9E2B-C15A0A82B8E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1D35981-C1F5-44CC-9E2B-C15A0A82B8E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1D35981-C1F5-44CC-9E2B-C15A0A82B8E9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F785BCCC-21F9-4EF4-8208-7E2FDC2C4BDC} = {B024B170-6949-4C3C-82E5-1ED7D5D9B983}
+		{78DE1F1E-4016-4979-AD63-F4F7DB863C82} = {B024B170-6949-4C3C-82E5-1ED7D5D9B983}
+		{ABCBC744-E25A-44AA-AE2F-6053AB1F2B79} = {B024B170-6949-4C3C-82E5-1ED7D5D9B983}
+		{00D62294-E542-4C01-9806-7832879746DB} = {B024B170-6949-4C3C-82E5-1ED7D5D9B983}
+		{F1D35981-C1F5-44CC-9E2B-C15A0A82B8E9} = {47C1CEF1-3A50-4298-9C87-5CE91CA06C56}
+	EndGlobalSection
+EndGlobal
