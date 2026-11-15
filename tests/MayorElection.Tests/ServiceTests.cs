@@ -233,7 +233,7 @@ public sealed class ServiceTests
     };
 
     // Independent RFC 6238 test-code generator; production verification uses only Identity.
-    private static string Totp(string secret)
+    internal static string Totp(string secret)
     {
         const string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
         var bytes = new List<byte>();

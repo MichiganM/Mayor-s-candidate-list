@@ -1,0 +1,47 @@
+name: Build and test
+
+on:
+  push:
+    branches: [main, develop, 'release/**', 'hotfix/**']
+    tags: ['v*']
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6
+        with:
+          global-json-file: global.json
+      - name: Restore and audit all dependencies
+        run: dotnet restore MayorElection.sln -p:NuGetAuditMode=all -warnaserror
+      - name: Build release
+        run: dotnet build MayorElection.sln -c Release --no-restore -warnaserror
+      - name: Test
+        run: dotnet test MayorElection.sln -c Release --no-build --collect:"XPlat Code Coverage" --results-directory artifacts/TestResults --logger trx
+      - name: Verify migrations
+        run: |
+          dotnet tool restore
+          dotnet ef migrations has-pending-model-changes --project src/MayorElection.Data --startup-project src/MayorElection.Data --configuration Release --no-build
+      - name: Publish Windows application
+        run: dotnet publish src/MayorElection.WinForms -c Release -r win-x64 --self-contained true -o artifacts/MayorElection-win-x64 -p:PublishTrimmed=false
+      - name: Upload application
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: MayorElection-win-x64
+          path: artifacts/MayorElection-win-x64/
+          retention-days: 14
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: test-reports
+          path: artifacts/TestResults/
+          retention-days: 14

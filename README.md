@@ -4,7 +4,8 @@
 
 ## Состояние
 
-Этап 4: реализованы Domain, Data, бизнес-сервисы и рабочие WinForms-формы.
+Версия 1.0.0: реализованы Domain, Data, бизнес-сервисы и рабочие WinForms-формы.
+Репозиторий: [MichiganM/Mayor-s-candidate-list](https://github.com/MichiganM/Mayor-s-candidate-list).
 
 ## Требования и запуск
 
@@ -106,7 +107,7 @@ CancellationToken поддерживают отмену. Валидация во
 - WinForms → Services, Data: формы и composition root с DI.
 - Tests → Services, Data: модульные и интеграционные проверки.
 
-Маппинг DTO будет ручным: небольшой набор сущностей позволяет явно контролировать поля без дополнительной библиотеки.
+Маппинг DTO ручной: небольшой набор сущностей позволяет явно контролировать поля без дополнительной библиотеки.
 Строка подключения задаётся в `appsettings.json`. Реальная БД и логи исключены из Git.
 
 ## GitFlow
@@ -114,7 +115,38 @@ CancellationToken поддерживают отмену. Валидация во
 `main` — релизы, `develop` — интеграция. Функции: `feature/*` от develop с merge `--no-ff`.
 Релизы: `release/*` от develop, merge в main и develop, тег версии.
 Исправления релиза: `hotfix/*` от main с merge в main и develop.
-На этапе 1 релизный тег не создаётся. GitHub remote будет добавлен после получения URL.
+Релиз 1.0.0 оформляется веткой release/1.0.0 и annotated tag v1.0.0.
+Команды и шаблон будущего хотфикса: [docs/gitflow.md](docs/gitflow.md).
+
+## Тесты и автономная сборка
+
+Реализованы 6 модульных и 16 интеграционных тестов. Тесты проверяют валидацию, статусы,
+порядок, PasswordHasher, TOTP, блокировки, миграции, JSON и откат транзакций.
+В последнем локальном запуске — 22/22; покрытие строк Services — 97,58%.
+Проверка NuGet (включая транзитивные зависимости) не обнаружила известных уязвимых пакетов.
+
+```powershell
+dotnet build MayorElection.sln -c Release
+dotnet test MayorElection.sln -c Release --no-build --collect:"XPlat Code Coverage" --results-directory artifacts/TestResults
+dotnet publish src/MayorElection.WinForms -c Release -r win-x64 --self-contained true -o artifacts/MayorElection-win-x64 -p:PublishTrimmed=false
+```
+
+После publish запустите `artifacts/MayorElection-win-x64/MayorElection.WinForms.exe`.
+Для этой сборки не требуется установленный .NET или сервер БД. Переносить нужно весь каталог
+с DLL, native SQLite и appsettings.json; запускать из каталога, доступного для записи.
+В GitHub Actions доступны артефакт приложения и отчёты тестов после успешного workflow.
+Сгенерированные артефакты, БД и логи в Git не включаются.
+
+Документация: [архитектура и требования](docs/requirements.md),
+[приёмка и команды проверок](docs/acceptance.md), [changelog](CHANGELOG.md),
+[отчёт финального этапа](docs/stage-5.md).
+
+## Ограничения
+
+Восстановление доступа при утрате аутентификатора и смена пароля в UI не реализованы.
+Роль Admin создаётся при первом запуске; все зарегистрированные пользователи имеют одинаковый доступ к CRUD.
+Полный ручной сценарий с внешним аутентификатором и файловыми диалогами ещё требует проверки.
+Возрастные и иные юридические критерии допуска к выборам не задавались и не моделируются.
 
 ## План скриншотов
 
