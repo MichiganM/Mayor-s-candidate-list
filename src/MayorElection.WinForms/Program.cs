@@ -2,6 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using MayorElection.Data;
+using MayorElection.Services;
 
 namespace MayorElection.WinForms;
 
@@ -21,6 +22,7 @@ internal static class Program
             .ConfigureServices((context, services) =>
             {
                 services.AddElectionData(context.Configuration);
+                services.AddElectionServices();
                 services.AddTransient<ScaffoldForm>();
             })
             .Build();
