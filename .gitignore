@@ -1,0 +1,14 @@
+.tools/
+.vs/
+.idea/
+**/bin/
+**/obj/
+**/TestResults/
+*.user
+*.suo
+*.db
+*.db-shm
+*.db-wal
+logs/
+artifacts/
+*.log
